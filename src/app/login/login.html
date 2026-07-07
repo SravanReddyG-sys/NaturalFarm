@@ -17,10 +17,10 @@
                   [class.is-invalid]="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
                 >
                 <div class="invalid-feedback" *ngIf="loginForm.get('email')?.hasError('required')">
-                  Email is required
+                  Email is required.
                 </div>
                 <div class="invalid-feedback" *ngIf="loginForm.get('email')?.hasError('email')">
-                  Please enter a valid email
+                  Please enter a valid email address.
                 </div>
               </div>
               <div class="mb-3">
