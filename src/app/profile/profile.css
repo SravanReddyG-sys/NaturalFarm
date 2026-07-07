@@ -1,0 +1,37 @@
+section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, #28a745, #f8f9fa);
+}
+.profile-card {
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  padding: 20px;
+}
+.card-img-top {
+  width: 150px;
+  height: 150px;
+  margin: 0 auto 15px;
+  object-fit: cover;
+}
+.card-body {
+  padding: 1.5rem;
+}
+.card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.card-text {
+  font-size: 1rem;
+  color: #555;
+}
+.bi {
+  font-size: 1.5rem;
+  color: #40a9c6;
+  transition: color 0.3s ease;
+}
+.bi:hover {
+  color: #46b2d3;
+}

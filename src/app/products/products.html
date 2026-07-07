@@ -1,0 +1,396 @@
+<section class="ProductHero">
+<div class="container mt-4" style="animation: fadeIn 1s ease-in;">
+  <div class="input-group mb-3">
+    <input style="border-radius: 5px;"
+      type="text" 
+      [(ngModel)]="searchTerm" 
+      placeholder="Enter the Product Name. Eg; Organic Milk" 
+      (keyup.enter)="searchProduct()" 
+      class="form-control"
+    >
+    <button style="margin-left: 5px;border-radius: 5px;"
+      class="btn btn-success" 
+      (click)="searchProduct()" 
+      [disabled]="!searchTerm.trim()"
+    >
+      Search
+    </button>
+    <button style="border-radius: 5px;"
+      class="btn btn-secondary" 
+      (click)="clearSearch()" 
+      *ngIf="isSearchActive"
+    >
+      Clear
+    </button>
+  </div>
+
+  <div *ngIf="isSearchActive && product" class="card shadow-sm p-3 mb-4">
+    <h4 class="card-title" style="color: #807f8f;font-family: fantasy;">Product Details</h4>
+    <div class="card-body">
+      <p><strong style="color: brown;">Name:</strong> {{ product.name }}</p>
+      <p><strong>Description:</strong> {{ product.description }}</p>
+      <p><strong style="color:#72d5d3;">Price:</strong> {{ product.price | number:'1.2-2'|currency:'INR' }}</p>
+    </div>
+  </div>
+
+  <div *ngIf="isSearchActive && !product" class="alert alert-warning">
+    No product found with name "<strong>{{ searchTerm }}</strong>"
+  </div>
+</div>
+<section class="products">
+  <h1>Grab the Health as well as Taste with our Farm Fresh Products</h1>
+  <h2>From spices to Milk all at one place</h2>
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="badge">Organic</div>
+      <img src="https://img.freepik.com/premium-photo/set-dairy-products-table_441923-5917.jpg?ga=GA1.1.687324532.1749707095&semt=ais_hybrid&w=740" alt="Organic Milk">
+      <h3>Organic Milk</h3>
+      <p>Pure&fresh milk from healthy environment grown cows.</p>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">75.00</i>
+         </button>
+      </div>
+      <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="badge">Free-Range</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://img.freepik.com/free-photo/ai-generated-chicken-picture_23-2150653731.jpg?ga=GA1.1.687324532.1749707095&semt=ais_hybrid&w=740" alt="Free-Range Chicken">
+      <h3>Free-Range Chicken</h3>
+      <p>Healthy, antibiotic-free poultry.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">750.00/kg</i>
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="badge">Fresh</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://img.freepik.com/free-photo/salted-lamb-ribs-prepared-cooking-tomato-bell-pepper-greens-side-view_141793-12478.jpg?ga=GA1.1.687324532.1749707095&semt=ais_hybrid&w=740" alt="Grass-Fed Meat">
+      <h3>Lamb-Meat</h3>
+      <p>Premium cuts, naturally raised.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">1200.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Natural</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/538184814/photo/maple-syrup-in-glass-bottle-on-wooden-table.jpg?s=612x612&w=0&k=20&c=otZW1nqNfVGroXScQR3jG3wwZYe28IWqufZw94lHHnA=" alt="Honey">
+      <h3>Honey</h3>
+      <p>Raw Natural Honey</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">350.00/kg</i>
+           
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Top Selling</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/1187181045/photo/pure-or-desi-ghee-clarified-melted-butter-healthy-fats-bulletproof-diet-concept-or-paleo.jpg?b=1&s=612x612&w=0&k=20&c=wHpzfmRZTtY7WRIgaT6sSs741yOFsvxXoOhNLOVXDPo=" alt="Ghee">
+      <h3>Ghee</h3>
+      <p>A2 Desi Cow Cultured Ghee</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">3500.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Fresh</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/1135096233/photo/turmeric-roots-and-powder-shot-from-above.jpg?s=612x612&w=0&k=20&c=_lYw5VGlxBPTOzW1BKdupih1NixSYA5a0MZuH0q5CW0=" alt="Turmeric Powder">
+      <h3>Turmeric</h3>
+      <p>Unprocessed Natural Turmeric</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">250.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Save</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/622780442/photo/red-chili-peppers.jpg?s=612x612&w=0&k=20&c=H5tFA-u6uV2CRUtWYmxhPznNEpidQf2k_32iiBsK1nA=" alt="Red Chilli Powder">
+      <h3>Red Chilli Powder</h3>
+      <p>Natural Guntur Special Mirchi Powder.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">300.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Best Selling</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/183467198/photo/cashew-nuts-in-a-sack.jpg?s=612x612&w=0&k=20&c=lpyze0qOQ291XSt4LTF26av2CstWzUUK-jDYprQJNO4=" alt="Khaju">
+      <h3>Cashews</h3>
+      <p>Premium, Hand Grounded cashews.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">450.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Trending</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/611309480/photo/wooden-spoon-oil-chia-seeds.jpg?s=612x612&w=0&k=20&c=zJLPrRXNmqgbtrD8AzJNFGoZPYBUqDdkVZXhe5VrPtk=" alt="Chia seeds">
+      <h3>Chia seeds</h3>
+      <p>Premium Quality Chia Seeds</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">150.00/50gms</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Healthy</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/535504284/photo/raw-sugar-still-life.jpg?s=612x612&w=0&k=20&c=VuBa-2javxRFBj1fZyGeeRjVBS_B7JVwPCXX8rImGww=" alt="Brown sugar">
+      <h3>Brown Sugar</h3>
+      <p>Better to Switch to Brown, Not white always healthy</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">120.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Premium</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/1132915437/video/rotating-cardamom-seeds.jpg?s=640x640&k=20&c=LYz0gS-jiFToq73MzIclc2aHaVXb0-hZFhXskLuE5HU=" alt="Cardamum">
+      <h3>Cardamum</h3>
+      <p>Kerala Imported Quality.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">1570.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Fresh</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://img.freepik.com/free-photo/salted-lamb-ribs-prepared-cooking-tomato-bell-pepper-greens-side-view_141793-12478.jpg?ga=GA1.1.687324532.1749707095&semt=ais_hybrid&w=740" alt="Grass-Fed Meat">
+      <h3>Lamb-Meat</h3>
+      <p>Premium cuts, naturally raised.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">1200.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Premium Quality</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://vaaradhifarms.com/cdn/shop/files/ecommified_Indian_dry_Saffron_-_kesar_on_a_brown_bowl_kitchen_b_bc1c5136-f9e9-4f28-8a0f-51d3308b093d.png?v=1705982784&width=400" alt="Saffron">
+      <h3>saffron</h3>
+      <p>Authentic Kashmiri Saffron</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">576.00/gm</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Premium</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://media.istockphoto.com/id/1152909671/photo/almonds-in-wooden-spoon-with-oil-bowl-vertical-image-wallpaper.jpg?s=612x612&w=0&k=20&c=YHDTXQNjkdrVu9IzXUtJmjeyvLgMADiVtB_1bIkvlj0=" alt="Almonds">
+      <h3>Almonds</h3>
+      <p>Premium Quality Almonds</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">1570.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+     <div class="product-card">
+      <div class="badge">Natural</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://vaaradhifarms.com/cdn/shop/files/moringaoil.png?v=1732595994&width=400" alt="Groundnut Oil">
+      <h3>Groundnut oil</h3>
+      <p>Bull driven Groundnut oil.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">750.00/kg</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="badge">Farm-Fresh</div>
+      <div style="margin-bottom: 37px;">
+      <img src="https://img.freepik.com/free-photo/eggs-cups-burlap-with-dry-grass_1150-25512.jpg?ga=GA1.1.687324532.1749707095&semt=ais_hybrid&w=740" alt="Organic Eggs">
+      <h3>Organic Eggs</h3>
+      <p>Fresh eggs from happy hens.</p>
+      </div>
+      <div style="text-align: center; margin-bottom: 10px;">
+         <button type="button" class="btn btn-secondary">
+            <i class="bi bi-currency-rupee">120.00/6pcs.</i>
+            
+         </button>
+      </div>
+      <div style="margin-bottom: 15px;">
+        <div style="margin-left: 20px;" class="btn-group me-2" role="group" aria-label="First group">
+           <button type="button" class="btn btn-success" [routerLink]="('/form-component')">Buy Now</button>
+        </div>
+        <div class="btn-group me-2" role="group" aria-label="Second group">
+           <button type="button" (click)="addToCart()" class="btn btn-warning">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>

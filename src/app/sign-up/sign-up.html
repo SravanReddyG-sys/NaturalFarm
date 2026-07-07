@@ -1,0 +1,97 @@
+<div style="margin-bottom: 5%;" class="row justify-content-center">
+      <div class="col-md-6 col-lg-4">
+        <div class="card shadow-sm signup-card" [@fadeIn]="animationState">
+          <div class="card-body p-4">
+            <h3 class="card-title text-center text-success mb-4">Sign Up for Natural Farm</h3>
+            <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+              <div class="mb-3">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fullName"
+                  formControlName="fullName"
+                  placeholder="Enter your full name"
+                  [class.is-invalid]="signupForm.get('fullName')?.invalid && signupForm.get('fullName')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="signupForm.get('fullName')?.hasError('required')">
+                  Full name is required
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="email"
+                  formControlName="email"
+                  placeholder="Enter your email"
+                  [class.is-invalid]="signupForm.get('email')?.invalid && signupForm.get('email')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('required')">
+                  Email is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('email')?.hasError('email')">
+                  Please enter a valid email
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="phone" class="form-label">Phone Number</label>
+                <input
+                  type="tel"
+                  class="form-control"
+                  id="phone"
+                  formControlName="phone"
+                  placeholder="Enter your phone number"
+                  [class.is-invalid]="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="signupForm.get('phone')?.hasError('required')">
+                  Phone number is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('phone')?.hasError('pattern')">
+                  Please enter a valid phone number (10 digits)
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="password"
+                  formControlName="password"
+                  placeholder="Enter your password"
+                  [class.is-invalid]="signupForm.get('password')?.invalid && signupForm.get('password')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('required')">
+                  Password is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.get('password')?.hasError('minlength')">
+                  Password must be at least 6 characters
+                </div>
+              </div>
+              <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirmPassword"
+                  formControlName="confirmPassword"
+                  placeholder="Confirm your password"
+                  [class.is-invalid]="signupForm.get('confirmPassword')?.invalid && signupForm.get('confirmPassword')?.touched"
+                >
+                <div class="invalid-feedback" *ngIf="signupForm.get('confirmPassword')?.hasError('required')">
+                  Confirm password is required
+                </div>
+                <div class="invalid-feedback" *ngIf="signupForm.hasError('passwordMismatch')">
+                  Passwords do not match
+                </div>
+              </div>
+              <button type="submit" class="btn btn-success w-100 mb-3" [disabled]="signupForm.invalid">Sign Up</button>
+              <p class="text-center">
+                Already have an account? <a style="cursor: pointer;" routerLink="/login" class="text-success">Login</a>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>

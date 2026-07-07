@@ -1,0 +1,42 @@
+<div class="form-container">
+  <h2>Order Your Farm-Fresh Products</h2>
+  <form [formGroup]="shopForm" (ngSubmit)="SubmitButton()">
+    <label for="fullName">Full Name</label>
+    <input id="fullName" type="text" formControlName="fullName" />
+    <div *ngIf="f['fullName'].touched && f['fullName'].invalid" class="error">
+      Name is required (min 3 characters).
+    </div>
+    <label for="email">Email</label>
+    <input id="email" type="email" formControlName="email" />
+    <div *ngIf="f['email'].touched && f['email'].invalid" class="error">
+      Enter a valid email.
+    </div>
+    <label for="phone">Phone Number</label>
+    <input id="phone" type="tel" formControlName="phone" />
+    <div *ngIf="f['phone'].touched && f['phone'].invalid" class="error">
+      Enter a valid 10-digit number.
+    </div>
+    <label for="address">Address</label>
+    <textarea id="address" formControlName="address"></textarea>
+    <div *ngIf="f['address'].touched && f['address'].invalid" class="error">
+      Address is required.
+    </div>
+    <label for="product">Product Type</label>
+    <select id="product" formControlName="product">
+      <option value="">Select a product</option>
+      <option value="Milk">Milk</option>
+      <option value="Chicken">Chicken</option>
+      <option value="Meat">Meat</option>
+      <option value="Eggs">Eggs</option>
+    </select>
+    <div *ngIf="f['product'].touched && f['product'].invalid" class="error">
+      Please select a product.
+    </div>
+    <label for="quantity">Quantity</label>
+    <input id="quantity" type="number" formControlName="quantity" min="1" />
+    <div *ngIf="f['quantity'].touched && f['quantity'].invalid" class="error">
+      Minimum quantity is 1.
+    </div>
+    <button type="submit" [disabled]="shopForm.invalid">Place Order</button>
+  </form>
+</div>

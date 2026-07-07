@@ -1,0 +1,33 @@
+<nav class="navbar">
+  <div class="logo">
+    <img src="sustainable.png" alt="NaturalFarms Logo" />
+    <br>
+    <br>
+    <span>NaturalFarms</span>
+  </div>
+  <ul class="nav-links">
+    <li><a routerLink="/home">Home</a></li>
+    <li><a routerLink="/product">Products</a></li>
+    <li><a routerLink="/form-component">Shop Now</a></li>
+    <li><a routerLink="/login">Login</a></li>
+    <li><a routerLink="/register">Signup</a></li>
+    <div>
+    <button style="background-color: #6c757d;" class="btn btn-outline text-light  position-relative">
+    <i class="bi bi-cart"></i> Cart
+      <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+        {{ cartCount }}
+      </span>
+    </button>
+    </div>
+     <div>
+    <button style="background-color: #cc4848;" (click)="ResetCart()" class="btn btn-outline text-light position-relative">
+      Empty Cart
+    </button>
+    </div>
+    <a routerLink="/profile">
+      <div id="ProfileDivision" class="profile-icon">
+        <i class="bi bi-person-fill large-icon"></i>
+      </div>
+    </a>
+  </ul>
+</nav>
