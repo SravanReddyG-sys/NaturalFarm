@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "server": "node server/index.js",
+    "server:install": "npm install --prefix server"
   },
   "private": true,
   "dependencies": {
@@ -19,6 +21,7 @@
     "@angular/router": "^20.0.0",
     "bootstrap": "^5.3.7",
     "bootstrap-icons": "^1.13.1",
+    "@stripe/stripe-js": "^5.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
